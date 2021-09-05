@@ -1,0 +1,14 @@
+[Unit]
+Description=GPIO rest api server
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+WorkingDirectory=/opt/gpio-rest-api-server
+ExecStart=/opt/gpio-rest-api-server/gpio-rest-api-server -recovery
+
+[Install]
+WantedBy=multi-user.target

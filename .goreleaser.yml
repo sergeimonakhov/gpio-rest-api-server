@@ -1,0 +1,28 @@
+env:
+  - GO111MODULE=on
+  - GOPROXY=https://goproxy.io
+
+before:
+  hooks:
+    - apt-get update
+    - apt-get install -y –no-install-recommends gcc-arm-linux-gnueabihf
+    - go mod download
+
+builds:
+  -
+    env:
+      - CC=arm-linux-gnueabihf-gcc
+      - CGO_ENABLED=1
+    goos:
+      - linux
+    goarch:
+      - arm
+    goarm:
+      - 7
+
+archives:
+  - files:
+    - configs/*
+
+checksum:
+  name_template: 'checksums.txt'
