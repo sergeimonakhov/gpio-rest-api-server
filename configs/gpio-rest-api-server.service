@@ -3,6 +3,7 @@ Description=GPIO rest api server
 After=network.target
 
 [Service]
+User=pi
 Type=simple
 Restart=on-failure
 RestartSec=10
